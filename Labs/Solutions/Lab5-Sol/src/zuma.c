@@ -1,11 +1,9 @@
-#include "datamaker.h"
+#include "zuma.h"
 
 int len;
 zuma *head = NULL, *tail = NULL;
 int ans = 0;
 int K = 0;
-int TT_cnt = 0;
-const int TT = 5000, N = 1000;
 
 void match(zuma *node) {
   if (node == NULL)
@@ -59,8 +57,7 @@ void Insert(int k, int color, int val) {
   new_node->pre = NULL;
   new_node->nxt = NULL;
   if (k == 0) {
-    if (head == tail)
-      tail = new_node;
+    tail = new_node;
     head = new_node;
     return;
   }
@@ -124,17 +121,12 @@ void set_top(int k) {
 }
 
 void init() {
-  printf("%d\n", N);
-  fflush(stdout);
+  int N;
+  scanf("%d", &N);
   int i;
-  int lst = 0, llst = 0;
   for (i = 0; i < N; i++) {
-    int color = rand() % 3 + 1, val = rand() % 10 + 1;
-    while (color == lst && color == llst)
-      color = rand() % 3 + 1;
-    llst = lst;
-    lst = color;
-    printf("%d %d\n", color, val);
+    int color, val;
+    scanf("%d %d", &color, &val);
     Insert(len, color, val);
   }
   return;
@@ -142,40 +134,24 @@ void init() {
 
 void solve() {
   int k = 0, T = 0;
-  if (TT_cnt > T || len == 0) {
-    if (len == 0)
-      k = 0;
-    else {
-      T = 4;
-      k = rand() % len + 1;
-    }
-  } else {
-    T = rand() % 5 + 1;
-    k = rand() % len + 1;
-  }
-  printf("%d ", k);
+  scanf("%d", &k);
   if (k == 0) {
     if (len == 0)
       ans *= 2;
-    fflush(stdout);
-    freopen("random_case.out", "w", stdout);
     printf("%d\n", ans);
     fflush(stdout);
     exit(0);
   }
-  printf("%d", T);
+  scanf("%d", &T);
   if (T == 4) {
-    printf("\n");
     Delete(k);
   } else if (T == 5) {
-    printf("\n");
     set_top(k);
   } else {
-    int val = rand() % 10 + 1;
-    printf(" %d\n", val);
+    int val = 0;
+    scanf("%d", &val);
     Insert(k, T, val);
   }
-  fflush(stdout);
   return;
 }
 
@@ -191,8 +167,7 @@ void print_all() {
 }
 
 int main() {
-  srand(time(0));
-  freopen("random_case.in", "w", stdout);
+  freopen("myans.out", "w", stdout);
   init();
   while (1) {
     K = 0;

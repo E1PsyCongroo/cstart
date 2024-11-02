@@ -4,7 +4,7 @@
 
 你可能需要学习双端链表这一数据结构
 
-请阅读同目录下的doubly_linked_list.md
+请阅读同目录下的[doubly_linked_list.md](./doubly_linked_list.md)
 
 ## 题意描述
 
@@ -53,11 +53,11 @@ $$
 
 ## 样例输入
 
-见四组.in文件
+见`test`目录下四组.in文件
 
 ## 样例输出
 
-见四组.out文件
+见`test`目录下四组.out文件
 
 ## 注意事项
 
@@ -67,4 +67,8 @@ $$
 
 运行datamaker可执行文件生成一组随机测试样例:randomcase.in,randomcase.out
 
-运行judge.sh检测程序正确性(如果显示权限不够就给它权限，RTFM)
+```shell
+make all            # 编译代码
+make judge-case     # 运行测试样例
+make judge-random   # 随机生成样例进行测试
+```
